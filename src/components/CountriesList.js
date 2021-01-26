@@ -33,11 +33,7 @@ const CountriesList = () => {
           </>
         )}
       />
-      <Route
-        path="/:id"
-        exact
-        render={({ match }) => <Country id={match.params.id} />}
-      />
+      <Route path="/:id" exact render={() => <Country />} />
     </BrowserRouter>
   );
 };
