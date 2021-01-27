@@ -1,0 +1,11 @@
+.countryList {
+  // margin-top: 4rem;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  justify-content: space-between;
+  margin: 0 8rem;
+}
