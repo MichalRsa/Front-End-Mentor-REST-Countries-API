@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import { DataContext } from './contexts/DataContext';
 
+import './app.module.scss';
+
 import CountriesList from './components/CountriesList';
 
 const App = () => {

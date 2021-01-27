@@ -2,14 +2,19 @@ import React, { useContext, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { DataContext } from '../contexts/DataContext';
 
-import List from './List';
-import Filter from './Filter';
-import Country from './Country';
+import styles from './CountriesList.module.scss';
+
+import Header from './header/Header';
+import List from './list/List';
+import Filter from './searchingTools/Filter';
+import SearchBox from './searchingTools/SearchBox';
+import Country from './country/Country';
 
 const CountriesList = () => {
   const { countries } = useContext(DataContext);
 
   const [list, setList] = useState(countries);
+  const [country, setCountry] = useState();
 
   const renderList = (selectedRegion) => {
     if (selectedRegion === 'All') {
@@ -21,14 +26,28 @@ const CountriesList = () => {
       setList(list);
     }
   };
+
+  const searchForCountry = (e, country) => {
+    e.preventDefault();
+    setCountry(country);
+    setList(
+      list.filter((listCountry) =>
+        listCountry.name.toLowerCase().includes(country)
+      )
+    );
+  };
   return (
     <BrowserRouter>
+      <Header />
       <Route
         path="/"
         exact
         render={() => (
           <>
-            <Filter renderList={renderList} />
+            <div className={styles.searchForCountry}>
+              <Filter renderList={renderList} />
+              <SearchBox searchForCountry={searchForCountry} />
+            </div>
             <List list={list} />
           </>
         )}
