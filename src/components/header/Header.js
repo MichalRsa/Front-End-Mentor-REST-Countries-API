@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from '../../contexts/ThemeContext';
+
 import styles from './header.module.scss';
 
+import ModeSwitch from './mode switch/ModeSwitch';
+
 const Header = () => {
+  const { darkTheme, changeTheme } = useContext(ThemeContext);
   return (
-    <header>
+    <header
+      className={`${styles.header} ${darkTheme ? styles.darkTheme : null}`}
+    >
       <h1> Where in the world?</h1>
-      <p>Switch dark/day mode</p>
+      <ModeSwitch changeTheme={changeTheme} />
     </header>
   );
 };

@@ -1,11 +1,22 @@
+import React, { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import styles from './list-item.module.scss';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 const ListItem = ({ flag, name, population, region, capital }) => {
+  const { darkTheme } = useContext(ThemeContext);
   return (
-    <Link to={name} className={styles.link}>
-      <div className={styles.countryCard}>
+    <Link
+      to={name}
+      className={`${styles.link} ${darkTheme ? styles.darkTheme : null}`}
+    >
+      <div
+        className={`${styles.countryCard} ${
+          darkTheme ? styles.darkTheme : null
+        }`}
+      >
         <div className={styles.flagContainer}>
           <img src={flag} alt="" className={styles.flag} />
         </div>

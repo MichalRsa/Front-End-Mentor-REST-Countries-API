@@ -3,10 +3,13 @@ import React from 'react';
 import DataContextProvider from './contexts/DataContext';
 
 import App from './App';
+import ThemeContextProvider from './contexts/ThemeContext';
 
 render(
   <DataContextProvider>
-    <App />
+    <ThemeContextProvider>
+      <App />
+    </ThemeContextProvider>
   </DataContextProvider>,
   document.getElementById('root')
 );

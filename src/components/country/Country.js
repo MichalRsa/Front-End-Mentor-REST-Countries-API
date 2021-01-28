@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { DataContext } from '../../contexts/DataContext';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 import styles from './country.module.scss';
 
 const Country = () => {
   let { id } = useParams();
   const { countries } = useContext(DataContext);
+  const { darkTheme } = useContext(ThemeContext);
   const history = useHistory();
 
   const [country, setCountry] = useState();
@@ -40,12 +42,14 @@ const Country = () => {
   if (loading) return <div>loading...</div>;
 
   return (
-    <div className={styles.countryPage}>
+    <div
+      className={`${styles.countryPage} ${darkTheme ? styles.darkTheme : null}`}
+    >
       {prevLocation === undefined ? (
         <Link to="/">Home</Link>
       ) : (
         <button
-          className={styles.button}
+          className={`${styles.button} ${darkTheme ? styles.darkTheme : null}`}
           onClick={() => {
             history.goBack();
           }}
@@ -87,7 +91,9 @@ const Country = () => {
         <h3>Border Countries:</h3>
         {borders.map((border) => (
           <Link
-            className={styles.borderButton}
+            className={`${styles.borderButton} ${
+              darkTheme ? styles.darkTheme : null
+            }`}
             to={{ pathname: border.name, state: country.name }}
             key={border.name}
           >

@@ -1,3 +1,5 @@
+@import '../colors/colors.modules.scss';
+
 .countryPage {
   position: absolute;
   padding: 0 10%;
@@ -5,29 +7,41 @@
   max-height: 100vh;
   top: 5rem;
   left: 0;
-  background-color: hsl(0, 0%, 98%);
+  background-color: $LightModeBackground;
   z-index: 10;
+  &.darkTheme {
+    background-color: $DarkModeBackground;
+    color: $LightModeElements;
+  }
   .button {
     border: none;
     border-radius: 0.4rem;
-    background-color: white;
+    background-color: $LightModeElements;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.32);
     font-size: 1.2rem;
     padding: 0.4em 1em;
     margin: 0.6em 0.6em 0.6em 0;
     max-height: 3rem;
+    &.darkTheme {
+      background-color: $DarkModeElements;
+      color: $LightModeElements;
+    }
   }
   .borderButton {
     display: inline-block;
     border-radius: 0.4rem;
-    background-color: white;
+    background-color: $LightModeElements;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.32);
     font-size: 1.2rem;
     padding: 0.4em 1em;
     margin: 0.5em;
     max-height: 3rem;
-    color: black;
+    color: $LightModeText;
     text-decoration: none;
+    &.darkTheme {
+      background-color: $DarkModeElements;
+      color: $LightModeElements;
+    }
   }
   .flagContainer {
     width: 100%;
