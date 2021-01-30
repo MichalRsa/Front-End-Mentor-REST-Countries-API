@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
 import styles from './modeSwitch.module.scss';
 import './modeSwitch.module.scss';
 
-const ModeSwitch = ({ changeTheme }) => {
+const ModeSwitch = () => {
+  const { darkTheme, changeTheme } = useContext(ThemeContext);
+  // const [togglePosition, setTogglePosition] = useState(
+  //   localStorage.getItem('theme') === 'true'
+  // );
+
+  // const toggleTheme = () => {
+
+  // }
   return (
     <>
       <label className={styles.switch}>
         <input
           className={`${styles.input} ${styles.switchInput}`}
           type="checkbox"
-          onClick={changeTheme}
+          onChange={changeTheme}
+          checked={darkTheme}
         />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>

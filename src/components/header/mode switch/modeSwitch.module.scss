@@ -1,3 +1,5 @@
+@import '../../colors/colors.modules.scss';
+
 .switch {
   position: relative;
   display: block;
@@ -30,7 +32,7 @@
 }
 
 .input:checked + .slider {
-  background-color: black;
+  background-color: $DarkModeBackground;
 }
 
 .input:checked + .slider::before {
