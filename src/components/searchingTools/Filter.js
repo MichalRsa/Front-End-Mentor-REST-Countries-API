@@ -1,26 +1,26 @@
-import React, { useState, useContext } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
-import styles from './searchingTools.module.scss';
+import styles from "./searchingTools.module.scss";
 
-const Filter = ({ renderList }) => {
+const Filter = ({ handleFormChange, region }) => {
   const { darkTheme } = useContext(ThemeContext);
-  const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-  const [region, setRegion] = useState();
+  const [input, setInput] = useState();
 
-  const handleFormChange = (event) => {
-    const region = event.target.value;
-    setRegion(region);
-    renderList(region);
+  const handleChange = (e) => {
+    handleFormChange(e.target.value);
+    setInput(e.target.value);
   };
+
   return (
     <select
       className={`${styles.selectRegion} ${
         darkTheme ? styles.darkTheme : null
       }`}
-      onChange={handleFormChange}
-      value={region}
+      onChange={handleChange}
+      value={input}
     >
       {regions.map((region) => (
         <option value={region} key={region}>

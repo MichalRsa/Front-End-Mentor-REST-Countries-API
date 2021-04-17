@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import { DataContext } from '../../contexts/DataContext';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { DataContext } from "../../contexts/DataContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
 
-import styles from './country.module.scss';
+import styles from "./country.module.scss";
 
 const Country = () => {
   let { id } = useParams();
@@ -80,27 +81,28 @@ const Country = () => {
           <span className={styles.span}>Capital:</span> {country.capital}
         </p>
         <p>
-          <span className={styles.span}>Top Level Domain:</span>{' '}
+          <span className={styles.span}>Top Level Domain:</span>{" "}
           {country.topLevelDomain}
         </p>
-        {/* <p>{country.currencies}</p> */}
-        {/* <p>{country.languages}</p> */}
+        {arrayToJsxEl(country.currencies, "Currency", "Currencies")}
+        {arrayToJsxEl(country.languages, "Language", "Languages")}
       </div>
-
-      <div className={styles.borderCountries}>
-        <h3>Border Countries:</h3>
-        {borders.map((border) => (
-          <Link
-            className={`${styles.borderButton} ${
-              darkTheme ? styles.darkTheme : null
-            }`}
-            to={{ pathname: border.name, state: country.name }}
-            key={border.name}
-          >
-            {border.name}
-          </Link>
-        ))}
-      </div>
+      {borders[0] && (
+        <div className={styles.borderCountries}>
+          <h3>Border Countries:</h3>
+          {borders.map((border) => (
+            <Link
+              className={`${styles.borderButton} ${
+                darkTheme ? styles.darkTheme : null
+              }`}
+              to={{ pathname: border.name, state: country.name }}
+              key={border.name}
+            >
+              {border.name}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
