@@ -30,12 +30,6 @@ const CountriesList = () => {
   const searchForCountry = (e, country) => {
     e.preventDefault();
 
-    // if (country === "" || country === undefined) {
-    //   setList(region);
-    //   console.log("hej");
-    //   return;
-    // }
-
     setList(
       region.filter((listCountry) =>
         listCountry.name.toLowerCase().includes(country)

@@ -26,7 +26,6 @@ export const arrayToJsxEl = (data, plural, singular) => {
 
 const putComma = (data, el) => {
   if (data[data.length - 1] !== el) {
-    console.log("dej przecinek");
     return ",";
   }
 };

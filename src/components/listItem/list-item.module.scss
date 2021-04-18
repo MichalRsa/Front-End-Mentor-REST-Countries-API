@@ -1,4 +1,4 @@
-@import '../colors/colors.modules.scss';
+@import "../colors/colors.modules.scss";
 
 .link {
   text-decoration: none;
@@ -51,7 +51,6 @@
   @media (min-width: 380px) {
     .countryCard {
       width: 16rem;
-      // margin: 0 2rem 2rem 1rem;
     }
     .detailsContainer {
       margin: 1.6em 0 2em 2em;

@@ -35,34 +35,34 @@ const Country = () => {
     setLocation(history.location.state);
   }, [id]);
 
-  // console.log(countries);
-  // console.log(country);
-  // console.log(borders);
+  const renderButton = () => {
+    const smth = () =>
+      prevLocation === undefined
+        ? {
+            action: () => history.push("/"),
+            name: "Home",
+          }
+        : { action: () => history.goBack(), name: "Back" };
 
-  // console.log(prevLocation);
+    return (
+      <button
+        className={`${styles.button} ${darkTheme ? styles.darkTheme : null}`}
+        onClick={smth().action}
+      >
+        {smth().name}
+      </button>
+    );
+  };
   if (loading) return <div>loading...</div>;
 
   return (
     <div
       className={`${styles.countryPage} ${darkTheme ? styles.darkTheme : null}`}
     >
-      {prevLocation === undefined ? (
-        <Link to="/">Home</Link>
-      ) : (
-        <button
-          className={`${styles.button} ${darkTheme ? styles.darkTheme : null}`}
-          onClick={() => {
-            history.goBack();
-          }}
-        >
-          Back
-        </button>
-      )}
-
+      {renderButton()}
       <div className={styles.flagContainer}>
         <img className={styles.flagImg} src={country.flag} alt="" />
       </div>
-
       <div className={styles.details}>
         <h2>{country.name}</h2>
         <p>
