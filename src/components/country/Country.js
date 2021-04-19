@@ -7,7 +7,7 @@ import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
 import styles from "./country.module.scss";
 
 const Country = () => {
-  let { id } = useParams();
+  let { type } = useParams();
   const { countries } = useContext(DataContext);
   const { darkTheme } = useContext(ThemeContext);
   const history = useHistory();
@@ -21,7 +21,7 @@ const Country = () => {
     // console.log('useEffect,', id);
     let country;
     setCountry(
-      () => (country = countries.find((country) => country.name === id))
+      () => (country = countries.find((country) => country.name === type))
     );
     // console.log(country);
     setBorders(() => {
@@ -33,7 +33,7 @@ const Country = () => {
     });
     setLoading(false);
     setLocation(history.location.state);
-  }, [id]);
+  }, [type]);
 
   const renderButton = () => {
     const smth = () =>

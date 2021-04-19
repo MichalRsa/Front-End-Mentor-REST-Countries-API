@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import styles from './list-item.module.scss';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import styles from "./list-item.module.scss";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 const ListItem = ({ flag, name, population, region, capital }) => {
   const { darkTheme } = useContext(ThemeContext);
   return (
     <Link
-      to={name}
+      to={`${region}/${name}`}
       className={`${styles.link} ${darkTheme ? styles.darkTheme : null}`}
     >
       <div

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { Link } from "react-router-dom";
 
 import styles from "./searchingTools.module.scss";
 
@@ -15,7 +16,7 @@ const Filter = ({ handleFormChange, region }) => {
   };
 
   return (
-    <select
+    <div
       className={`${styles.selectRegion} ${
         darkTheme ? styles.darkTheme : null
       }`}
@@ -23,11 +24,11 @@ const Filter = ({ handleFormChange, region }) => {
       value={input}
     >
       {regions.map((region) => (
-        <option value={region} key={region}>
+        <Link to={region} key={region}>
           {region}
-        </option>
+        </Link>
       ))}
-    </select>
+    </div>
   );
 };
 
