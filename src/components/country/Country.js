@@ -91,13 +91,11 @@ const Country = () => {
           <h3>Border Countries:</h3>
           {borders.map((border) => (
             <Link
-              // {() => location.pathname =''}
               className={`${styles.borderButton} ${
                 darkTheme ? styles.darkTheme : null
               }`}
               to={{
-                // pathname: border.name,
-                pathname: `${border.region}/${border.name}`,
+                pathname: `/${border.region}/${border.name}`,
                 state: country.name,
               }}
               key={border.name}
