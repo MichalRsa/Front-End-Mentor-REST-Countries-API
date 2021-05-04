@@ -51,7 +51,7 @@ const CountriesList = () => {
   return (
     <>
       <div className={styles.searchForCountry}>
-        <Filter handleFormChange={selectRegion} region={region} />
+        <Filter region={region} />
         <SearchBox searchForCountry={searchForCountry} />
       </div>
       <List list={list} />

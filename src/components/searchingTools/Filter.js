@@ -6,25 +6,18 @@ import regionList from "../../utils/regionList";
 
 import styles from "./searchingTools.module.scss";
 
-const Filter = ({ handleFormChange, region }) => {
+const Filter = () => {
   const { id } = useParams();
   const { darkTheme } = useContext(ThemeContext);
   const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-  const [filterValue, setFilterValue] = useState(id === undefined ? "All" : id);
+  const [filterValue, setFilterValue] = useState(id);
   // const [input, setInput] = useState();
   useEffect(() => {
-    if (filterValue !== undefined) {
-      setFilterValue(id);
-      regionList(filterValue);
-    }
-  }, [filterValue]);
-
-  const handleChange = (e) => {
-    handleFormChange(e.target.value);
     setFilterValue(id);
     regionList(id);
-  };
+  }, [id]);
+
   console.log(id);
   console.log(filterValue);
 
@@ -33,7 +26,6 @@ const Filter = ({ handleFormChange, region }) => {
       className={`${styles.selectRegion} ${
         darkTheme ? styles.darkTheme : null
       }`}
-      onClick={handleChange}
       value={filterValue}
     >
       {regions.map((region) => (
