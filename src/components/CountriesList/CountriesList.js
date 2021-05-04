@@ -16,7 +16,6 @@ const CountriesList = () => {
 
   useEffect(() => {
     selRegion();
-    console.log("działam");
   }, [id]);
 
   const selectRegion = (region) => {
@@ -31,7 +30,7 @@ const CountriesList = () => {
   };
   const selRegion = () => {
     const list = countries.filter((country) => country.region === id);
-    if (id === undefined) {
+    if (id === undefined || id === "All") {
       setList(countries);
       setRegion(countries);
     } else {

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
@@ -7,10 +7,11 @@ import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
 import styles from "./country.module.scss";
 
 const Country = () => {
-  let { type } = useParams();
+  let { type, id } = useParams();
   const { countries } = useContext(DataContext);
   const { darkTheme } = useContext(ThemeContext);
   const history = useHistory();
+  let location = useLocation();
 
   const [country, setCountry] = useState();
   const [borders, setBorders] = useState();
@@ -18,12 +19,10 @@ const Country = () => {
   const [prevLocation, setLocation] = useState();
 
   useEffect(() => {
-    // console.log('useEffect,', id);
     let country;
     setCountry(
       () => (country = countries.find((country) => country.name === type))
     );
-    // console.log(country);
     setBorders(() => {
       return country.borders
         .map((border) =>
@@ -33,7 +32,7 @@ const Country = () => {
     });
     setLoading(false);
     setLocation(history.location.state);
-  }, [type]);
+  }, [type, id]);
 
   const renderButton = () => {
     const smth = () =>
@@ -92,10 +91,15 @@ const Country = () => {
           <h3>Border Countries:</h3>
           {borders.map((border) => (
             <Link
+              // {() => location.pathname =''}
               className={`${styles.borderButton} ${
                 darkTheme ? styles.darkTheme : null
               }`}
-              to={{ pathname: border.name, state: country.name }}
+              to={{
+                // pathname: border.name,
+                pathname: `${border.region}/${border.name}`,
+                state: country.name,
+              }}
               key={border.name}
             >
               {border.name}

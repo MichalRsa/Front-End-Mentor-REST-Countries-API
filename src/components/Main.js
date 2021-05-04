@@ -1,5 +1,5 @@
 // import React, { useContext, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 // import { DataContext } from "../contexts/DataContext";
 
 // import styles from "./Main.module.scss";
@@ -40,8 +40,12 @@ const Main = () => {
   return (
     <BrowserRouter>
       <Header />
-      <Route path="/:id?" exact render={() => <CountiresList />} />
-      <Route path="/:id/:type" exact render={() => <Country />} />
+      <Switch>
+        <Route path="/:id" exact render={() => <CountiresList />} />
+        <Route path="/:id/:type" exact render={() => <Country />} />
+
+        <Redirect from="/" exact to="/All" />
+      </Switch>
     </BrowserRouter>
   );
 };
