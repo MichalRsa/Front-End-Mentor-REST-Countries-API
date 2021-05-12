@@ -40,25 +40,30 @@
   .container {
     top: 0;
     left: 0;
+    width: 140px;
     font-size: 1.2rem;
-    padding: 0.8em 2em;
+    // padding: 0.8em 2em;
     display: flex;
     flex-direction: column;
     position: absolute;
     border: none;
     border-radius: 0.4rem;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.32);
-    background-color: white;
+    background-color: $LightModeBackground;
+    // color: black;
     opacity: 1;
 
     .link {
       text-decoration: none;
       display: none;
+      padding: 0.8em 0;
+      width: 100%;
+      text-align: center;
 
       // background-color: $DarkModeElements;
       color: $DarkModeElements;
       &.show {
-        display: flex;
+        display: inline;
         order: -1;
       }
 
@@ -68,6 +73,14 @@
       }
       &.darkTheme {
         color: $LightModeElements;
+      }
+      &:hover {
+        border-radius: 0.4rem;
+        background-color: $LightModeBackgroundHover;
+      }
+      &.darkTheme:hover {
+        border-radius: 0.4rem;
+        background-color: $DarkModeElementsHover;
       }
     }
     &:hover .link {

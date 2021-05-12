@@ -38,7 +38,7 @@ const Country = () => {
     const smth = () =>
       prevLocation === undefined
         ? {
-            action: () => history.push("/"),
+            action: () => history.goBack(),
             name: "Home",
           }
         : { action: () => history.goBack(), name: "Back" };
