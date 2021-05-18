@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 import styles from "./searchingTools.module.scss";
 
-const SearchBox = ({ searchForCountry }) => {
+const SearchBox = () => {
   const { darkTheme } = useContext(ThemeContext);
-  const [input, setInput] = useState();
+  let history = useHistory();
+  const [input, setInput] = useState("");
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -14,8 +16,10 @@ const SearchBox = ({ searchForCountry }) => {
     <>
       <form
         onSubmit={(e) => {
-          searchForCountry(e, input);
-          setInput("");
+          e.preventDefault();
+          history.push(`${history.location.pathname}?search=${input}`);
+          // searchForCountry(e, input);
+          // setInput("");
         }}
       >
         <input

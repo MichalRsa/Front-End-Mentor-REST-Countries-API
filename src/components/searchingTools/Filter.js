@@ -26,7 +26,7 @@ const Filter = () => {
       className={`${styles.selectRegion} ${darkTheme ? styles.darkTheme : ""}`}
       value={filterValue}
     >
-      <diiv
+      <div
         className={`${styles.container} ${darkTheme ? styles.darkTheme : ""}`}
       >
         {regions.map((region) => (
@@ -41,7 +41,7 @@ const Filter = () => {
             {region}
           </Link>
         ))}
-      </diiv>
+      </div>
     </div>
   );
 };

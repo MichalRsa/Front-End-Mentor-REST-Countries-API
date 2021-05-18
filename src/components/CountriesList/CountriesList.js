@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import List from "../list/List";
 import Filter from "../searchingTools/Filter";
@@ -11,51 +11,68 @@ const CountriesList = () => {
   const { countries } = useContext(DataContext);
   const { id } = useParams();
 
+  const { search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const searchString = searchParams.get("search");
+  console.log(searchString);
+
   const [list, setList] = useState(countries);
   const [region, setRegion] = useState(countries);
+  const [loading, setLoading] = useState(true);
+  console.log(list);
 
   useEffect(() => {
-    selRegion();
-  }, [id]);
+    if (searchString !== null) {
+      selRegion(searchString);
 
-  const selectRegion = (region) => {
-    // const list = countries.filter((country) => country.region === region);
-    // if (region === "All") {
-    //   setList(countries);
-    //   setRegion(countries);
-    // } else {
-    //   setRegion(list);
-    //   setList(list);
-    // }
-  };
-  const selRegion = () => {
-    const list = countries.filter((country) => country.region === id);
+      setLoading(false);
+      return;
+    }
+    selRegion();
+    setLoading(false);
+  }, [id, search]);
+
+  const selRegion = (searchString) => {
     if (id === undefined || id === "All") {
+      if (searchString) {
+        const lowCaseString = searchString.toLowerCase();
+        setRegion(countries);
+        setList(
+          countries.filter((listCountry) =>
+            listCountry.name.toLowerCase().includes(lowCaseString)
+          )
+        );
+        return;
+      }
       setList(countries);
       setRegion(countries);
     } else {
+      const list = countries.filter((country) => country.region === id);
+      if (searchString) {
+        const lowCaseString = searchString.toLowerCase();
+        setRegion(list);
+        setList(
+          list.filter((listCountry) =>
+            listCountry.name.toLowerCase().includes(lowCaseString)
+          )
+        );
+        return;
+      }
       setRegion(list);
       setList(list);
     }
   };
 
-  const searchForCountry = (e, country) => {
-    e.preventDefault();
-
-    setList(
-      region.filter((listCountry) =>
-        listCountry.name.toLowerCase().includes(country)
-      )
-    );
-  };
-  return (
-    <>
+  return loading ? (
+    <p>Loading...</p>
+  ) : (
+    <div>
       <div className={styles.searchForCountry}>
-        <Filter region={region} />
-        <SearchBox searchForCountry={searchForCountry} />
+        <Filter />
+        <SearchBox />
       </div>
       <List list={list} />
-    </>
+    </div>
   );
 };
 
