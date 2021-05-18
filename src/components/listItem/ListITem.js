@@ -17,7 +17,7 @@ const ListItem = ({
   const { darkTheme } = useContext(ThemeContext);
   return (
     <Link
-      to={`${region}/${URL}`}
+      to={`${regionURL}/${URL}`}
       className={`${styles.link} ${darkTheme ? styles.darkTheme : null}`}
     >
       <div

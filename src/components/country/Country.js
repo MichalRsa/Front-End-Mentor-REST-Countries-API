@@ -95,7 +95,7 @@ const Country = () => {
                 darkTheme ? styles.darkTheme : null
               }`}
               to={{
-                pathname: `/${border.region}/${border.URL}`,
+                pathname: `/${border.regionURL}/${border.URL}`,
                 state: country.name,
               }}
               key={border.name}

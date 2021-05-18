@@ -44,7 +44,7 @@ const Main = () => {
         <Route path="/:id" exact render={() => <CountiresList />} />
         <Route path="/:id/:type" exact render={() => <Country />} />
 
-        <Redirect from="/" exact to="/All" />
+        <Redirect from="/" exact to="/all" />
       </Switch>
     </BrowserRouter>
   );

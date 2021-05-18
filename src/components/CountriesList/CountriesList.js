@@ -33,7 +33,7 @@ const CountriesList = () => {
   }, [id, search]);
 
   const selRegion = (searchString) => {
-    if (id === undefined || id === "All") {
+    if (id === undefined || id === "all") {
       if (searchString) {
         const lowCaseString = searchString.toLowerCase();
         setRegion(countries);
@@ -47,7 +47,7 @@ const CountriesList = () => {
       setList(countries);
       setRegion(countries);
     } else {
-      const list = countries.filter((country) => country.region === id);
+      const list = countries.filter((country) => country.regionURL === id);
       if (searchString) {
         const lowCaseString = searchString.toLowerCase();
         setRegion(list);
