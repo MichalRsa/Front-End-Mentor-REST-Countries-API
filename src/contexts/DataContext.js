@@ -1,21 +1,29 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect } from "react";
+import nameToURL from "../utils/nameToURL";
 
 export const DataContext = createContext();
 
-const API = 'https://restcountries.eu/rest/v2/all';
+const API = "https://restcountries.eu/rest/v2/all";
 
 const DataContextProvider = (props) => {
   const [countries, setCountries] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log('useUeffect running!');
+    console.log("useUeffect running!");
     fetch(API)
       .then((response) => {
         if (response.ok) return response.json();
         throw Error(response.status);
       })
-      .then((countries) => {
+      .then((data) => {
+        const countries = data.map((country) => ({
+          ...country,
+          URL: nameToURL(country.name),
+          regionURL: nameToURL(country.region),
+        }));
+        console.log(countries);
+        console.log(data);
         setCountries(countries);
         setLoading(false);
       })

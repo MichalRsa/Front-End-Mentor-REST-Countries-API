@@ -5,11 +5,19 @@ import { Link } from "react-router-dom";
 import styles from "./list-item.module.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
-const ListItem = ({ flag, name, population, region, capital }) => {
+const ListItem = ({
+  flag,
+  URL,
+  name,
+  population,
+  regionURL,
+  region,
+  capital,
+}) => {
   const { darkTheme } = useContext(ThemeContext);
   return (
     <Link
-      to={`${region}/${name}`}
+      to={`${region}/${URL}`}
       className={`${styles.link} ${darkTheme ? styles.darkTheme : null}`}
     >
       <div

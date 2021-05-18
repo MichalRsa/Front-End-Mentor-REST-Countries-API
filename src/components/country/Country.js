@@ -21,7 +21,7 @@ const Country = () => {
   useEffect(() => {
     let country;
     setCountry(
-      () => (country = countries.find((country) => country.name === type))
+      () => (country = countries.find((country) => country.URL === type))
     );
     setBorders(() => {
       return country.borders
@@ -95,7 +95,7 @@ const Country = () => {
                 darkTheme ? styles.darkTheme : null
               }`}
               to={{
-                pathname: `/${border.region}/${border.name}`,
+                pathname: `/${border.region}/${border.URL}`,
                 state: country.name,
               }}
               key={border.name}

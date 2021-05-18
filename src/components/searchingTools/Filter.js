@@ -18,8 +18,8 @@ const Filter = () => {
     // regionList(id);
   }, [id]);
 
-  console.log(id);
-  console.log(filterValue);
+  // console.log(id);
+  // console.log(filterValue);
 
   return (
     <div
