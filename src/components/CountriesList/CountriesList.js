@@ -6,6 +6,7 @@ import Filter from "../searchingTools/Filter";
 import SearchBox from "../searchingTools/SearchBox";
 
 import styles from "../Main.module.scss";
+import NotFound from "../notFound/NotFound";
 
 const CountriesList = () => {
   const { countries } = useContext(DataContext);
@@ -65,7 +66,7 @@ const CountriesList = () => {
 
   return loading ? (
     <p>Loading...</p>
-  ) : (
+  ) : list.length ? (
     <div>
       <div className={styles.searchForCountry}>
         <Filter />
@@ -73,6 +74,8 @@ const CountriesList = () => {
       </div>
       <List list={list} />
     </div>
+  ) : (
+    <NotFound />
   );
 };
 

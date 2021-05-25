@@ -7,9 +7,10 @@ import { useParams } from "react-router-dom";
 import styles from "./searchingTools.module.scss";
 
 const Filter = () => {
-  const { id } = useParams();
+  const { id, urls } = useParams();
   const { darkTheme } = useContext(ThemeContext);
   // const regions = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
+  console.log(urls);
 
   const regions = [
     { region: "All", regionURL: "all" },

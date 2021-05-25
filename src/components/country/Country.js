@@ -3,6 +3,7 @@ import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
+import NotFound from "../notFound/NotFound";
 
 import styles from "./country.module.scss";
 
@@ -23,6 +24,10 @@ const Country = () => {
     setCountry(
       () => (country = countries.find((country) => country.URL === type))
     );
+    if (!country) {
+      setLoading(false);
+      return;
+    }
     setBorders(() => {
       return country.borders
         .map((border) =>
@@ -52,9 +57,13 @@ const Country = () => {
       </button>
     );
   };
-  if (loading) return <div>loading...</div>;
 
-  return (
+  if (loading) return <div>loading...</div>;
+  console.log(country);
+
+  return !country ? (
+    <NotFound />
+  ) : (
     <div
       className={`${styles.countryPage} ${darkTheme ? styles.darkTheme : null}`}
     >
