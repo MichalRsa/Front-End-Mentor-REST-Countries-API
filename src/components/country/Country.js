@@ -1,8 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link, useHistory, useParams, useLocation } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { arrayToJsxEl } from "../../utils/arrayToJsxEl";
+import Button from "../Button/Button";
+import Loading from "../Loading/Loading";
 import NotFound from "../notFound/NotFound";
 
 import styles from "./country.module.scss";
@@ -12,18 +14,17 @@ const Country = () => {
   const { countries } = useContext(DataContext);
   const { darkTheme } = useContext(ThemeContext);
   const history = useHistory();
-  let location = useLocation();
 
   const [country, setCountry] = useState();
   const [borders, setBorders] = useState();
   const [loading, setLoading] = useState(true);
-  const [prevLocation, setLocation] = useState();
+  const [prevLocation, setLocation] = useState(null);
 
   useEffect(() => {
     let country;
-    setCountry(
-      () => (country = countries.find((country) => country.URL === type))
-    );
+    (() => (country = countries.find((country) => country.URL === type)))();
+    setCountry(country);
+
     if (!country) {
       setLoading(false);
       return;
@@ -37,7 +38,7 @@ const Country = () => {
     });
     setLoading(false);
     setLocation(history.location.state);
-  }, [type, id]);
+  }, [type, id, history.location.state, countries]);
 
   const renderButton = () => {
     const smth = () =>
@@ -48,18 +49,12 @@ const Country = () => {
           }
         : { action: () => history.goBack(), name: "Back" };
 
-    return (
-      <button
-        className={`${styles.button} ${darkTheme ? styles.darkTheme : null}`}
-        onClick={smth().action}
-      >
-        {smth().name}
-      </button>
-    );
+    return <Button action={smth().action} text={smth().name} />;
   };
+  console.log(prevLocation);
+  console.log(history.location);
 
-  if (loading) return <div>loading...</div>;
-  console.log(country);
+  if (loading) return <Loading />;
 
   return !country ? (
     <NotFound />

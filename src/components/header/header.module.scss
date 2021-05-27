@@ -1,4 +1,4 @@
-@import '../colors/colors.modules.scss';
+@import "../colors/colors.modules.scss";
 
 .header {
   // width: 100%;
@@ -13,5 +13,15 @@
   &.darkTheme {
     background-color: $DarkModeElements;
     color: $LightModeElements;
+  }
+}
+
+@media (max-width: 840px) {
+  .header {
+    padding: 1rem calc(5vw);
+    .pageName {
+      font-size: 1.4rem;
+      background-color: green;
+    }
   }
 }

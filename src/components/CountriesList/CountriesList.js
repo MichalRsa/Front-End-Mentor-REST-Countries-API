@@ -5,8 +5,9 @@ import List from "../list/List";
 import Filter from "../searchingTools/Filter";
 import SearchBox from "../searchingTools/SearchBox";
 
-import styles from "../Main.module.scss";
+import styles from "./countriesList.module.scss";
 import NotFound from "../notFound/NotFound";
+import Loading from "../Loading/Loading";
 
 const CountriesList = () => {
   const { countries } = useContext(DataContext);
@@ -21,6 +22,7 @@ const CountriesList = () => {
   const [region, setRegion] = useState(countries);
   const [loading, setLoading] = useState(true);
   // console.log(list);
+  console.log("CountriesList rerun!");
 
   useEffect(() => {
     if (searchString !== null) {
@@ -32,6 +34,7 @@ const CountriesList = () => {
     selRegion();
     setLoading(false);
   }, [id, search]);
+  console.log(loading);
 
   const selRegion = (searchString) => {
     if (id === undefined || id === "all") {
@@ -65,7 +68,7 @@ const CountriesList = () => {
   };
 
   return loading ? (
-    <p>Loading...</p>
+    <Loading />
   ) : list.length ? (
     <div>
       <div className={styles.searchForCountry}>
@@ -75,7 +78,7 @@ const CountriesList = () => {
       <List list={list} />
     </div>
   ) : (
-    <NotFound />
+    <NotFound setLoading={() => setLoading(true)} />
   );
 };
 

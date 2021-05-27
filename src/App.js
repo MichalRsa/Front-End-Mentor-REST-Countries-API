@@ -5,13 +5,14 @@ import { ThemeContext } from "./contexts/ThemeContext";
 import styles from "./app.module.scss";
 
 import Main from "./components/Main";
+import Loading from "./components/Loading/Loading";
 
 const App = () => {
   const { darkTheme } = useContext(ThemeContext);
   const { loading } = useContext(DataContext);
   return (
     <div className={darkTheme ? styles.darkTheme : null}>
-      {loading ? <h1>loading...</h1> : <Main />}
+      {loading ? <Loading /> : <Main />}
     </div>
   );
 };

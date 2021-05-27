@@ -1,0 +1,14 @@
+.searchForCountry {
+  // width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 8rem;
+}
+
+@media (max-width: 840px) {
+  .searchForCountry {
+    flex-direction: column-reverse;
+    align-items: center;
+    // justify-content: center;
+  }
+}

@@ -10,7 +10,6 @@ const DataContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("useUeffect running!");
     fetch(API)
       .then((response) => {
         if (response.ok) return response.json();
@@ -22,8 +21,6 @@ const DataContextProvider = (props) => {
           URL: nameToURL(country.name),
           regionURL: nameToURL(country.region),
         }));
-        console.log(countries);
-        console.log(data);
         setCountries(countries);
         setLoading(false);
       })

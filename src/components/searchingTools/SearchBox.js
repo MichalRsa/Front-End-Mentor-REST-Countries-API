@@ -29,7 +29,6 @@ const SearchBox = () => {
           onChange={handleChange}
           value={input}
         />
-        {/* <button>lupka</button> */}
       </form>
     </>
   );
