@@ -8,3 +8,9 @@
   justify-content: space-around;
   margin: 0 8rem;
 }
+
+@media (max-width: 840px) {
+  .countryList {
+    margin: 0;
+  }
+}

@@ -48,12 +48,16 @@
     }
   }
 
-  @media (min-width: 380px) {
+  @media (max-width: 840px) {
     .countryCard {
-      width: 16rem;
-    }
-    .detailsContainer {
-      margin: 1.6em 0 2em 2em;
+      width: 12rem;
+      height: 15.75rem;
+      .detailsContainer {
+        margin: 1.2em 0 1.5em 1.5em;
+      }
+      .flagContainer {
+        height: 7.5rem;
+      }
     }
   }
 }
