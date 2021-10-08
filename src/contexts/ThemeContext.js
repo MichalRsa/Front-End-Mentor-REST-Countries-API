@@ -9,11 +9,9 @@ const ThemeContextProvider = (props) => {
 
   const changeTheme = () => {
     if (darkTheme) {
-      console.log(' darktheme === false', localStorage.getItem('theme'));
       localStorage.setItem('theme', 'false');
       setDarkTheme(false);
     } else {
-      console.log(' darktheme === true', localStorage.getItem('theme'));
       localStorage.setItem('theme', 'true');
       setDarkTheme(true);
     }

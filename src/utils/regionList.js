@@ -1,11 +1,9 @@
-import styles from "../components/searchingTools/searchingTools.module.scss";
+import styles from '../components/searchingTools/searchingTools.module.scss';
 
 const regionList = (id) => {
   const li = document.querySelectorAll(`.${styles.link}`);
   const showEl = document.querySelector(`#${id}`);
   li.forEach((i) => {
-    console.log(showEl);
-
     i.classList.add(`${styles.hide}`);
   });
   showEl.classList.add(`${styles.show}`);

@@ -16,13 +16,10 @@ const CountriesList = () => {
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const searchString = searchParams.get('search');
-  // console.log(searchString);
 
   const [list, setList] = useState(countries);
   const [region, setRegion] = useState(countries);
   const [loading, setLoading] = useState(true);
-  // console.log(list);
-  console.log('CountriesList rerun!');
 
   useEffect(() => {
     if (searchString !== null) {
@@ -34,7 +31,6 @@ const CountriesList = () => {
     selRegion();
     setLoading(false);
   }, [id, search]);
-  console.log(loading);
 
   const selRegion = (searchString) => {
     if (id === undefined || id === 'all') {

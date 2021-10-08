@@ -30,29 +30,20 @@ const Country = () => {
       return;
     }
     setBorders(() => {
-      // if (country && country.borders) {
       if (country && Array.isArray(country.borders)) {
         return country.borders
           .map((border) => {
-            console.log('BORDER', border);
-            return countries.filter((country) => {
-              // border === country.aa3 &&
-              border === country.cca3 &&
-                console.log('IS BORDER', border === country.cca3);
-              // console.log(country.cca3);
-              return border === country.cca3;
-            });
+            return countries.filter(
+              (country) => border === country.cca3 && border === country.cca3
+            );
           })
           .flat();
       }
-      // }
     });
     setLoading(false);
     setLocation(history.location.state);
     // });
   }, [type, id]);
-  // console.log('BORDERS', borders);
-  // console.log('BORDERS', country && country.borders);
 
   const renderButton = () => {
     const smth = () =>
