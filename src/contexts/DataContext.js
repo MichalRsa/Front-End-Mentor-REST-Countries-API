@@ -1,9 +1,9 @@
-import React, { useState, createContext, useEffect } from "react";
-import nameToURL from "../utils/nameToURL";
+import React, { useState, createContext, useEffect } from 'react';
+import nameToURL from '../utils/nameToURL';
 
 export const DataContext = createContext();
 
-const API = "https://restcountries.eu/rest/v2/all";
+const API = 'https://restcountries.com/v3.1/all';
 
 const DataContextProvider = (props) => {
   const [countries, setCountries] = useState();
@@ -18,7 +18,7 @@ const DataContextProvider = (props) => {
       .then((data) => {
         const countries = data.map((country) => ({
           ...country,
-          URL: nameToURL(country.name),
+          URL: nameToURL(country.name.common),
           regionURL: nameToURL(country.region),
         }));
         setCountries(countries);

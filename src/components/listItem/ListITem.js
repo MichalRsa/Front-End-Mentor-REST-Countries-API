@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import styles from "./list-item.module.scss";
-import { ThemeContext } from "../../contexts/ThemeContext";
+import styles from './list-item.module.scss';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 const ListItem = ({
-  flag,
+  flags,
   URL,
   name,
   population,
@@ -26,10 +26,10 @@ const ListItem = ({
         }`}
       >
         <div className={styles.flagContainer}>
-          <img src={flag} alt="" className={styles.flag} />
+          <img src={flags.svg} alt='' className={styles.flag} />
         </div>
         <div className={styles.detailsContainer}>
-          <h2 className={styles.name}>{name}</h2>
+          <h2 className={styles.name}>{name.common}</h2>
           <div className={styles.content}>
             <p className={styles.textMargin}>
               <span className={styles.bold}>Population: </span>

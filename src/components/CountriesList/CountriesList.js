@@ -1,13 +1,13 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
-import { DataContext } from "../../contexts/DataContext";
-import List from "../list/List";
-import Filter from "../searchingTools/Filter";
-import SearchBox from "../searchingTools/SearchBox";
+import React, { useContext, useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { DataContext } from '../../contexts/DataContext';
+import List from '../list/List';
+import Filter from '../searchingTools/Filter';
+import SearchBox from '../searchingTools/SearchBox';
 
-import styles from "./countriesList.module.scss";
-import NotFound from "../notFound/NotFound";
-import Loading from "../Loading/Loading";
+import styles from './countriesList.module.scss';
+import NotFound from '../notFound/NotFound';
+import Loading from '../Loading/Loading';
 
 const CountriesList = () => {
   const { countries } = useContext(DataContext);
@@ -15,14 +15,14 @@ const CountriesList = () => {
 
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
-  const searchString = searchParams.get("search");
+  const searchString = searchParams.get('search');
   // console.log(searchString);
 
   const [list, setList] = useState(countries);
   const [region, setRegion] = useState(countries);
   const [loading, setLoading] = useState(true);
   // console.log(list);
-  console.log("CountriesList rerun!");
+  console.log('CountriesList rerun!');
 
   useEffect(() => {
     if (searchString !== null) {
@@ -37,13 +37,13 @@ const CountriesList = () => {
   console.log(loading);
 
   const selRegion = (searchString) => {
-    if (id === undefined || id === "all") {
+    if (id === undefined || id === 'all') {
       if (searchString) {
         const lowCaseString = searchString.toLowerCase();
         setRegion(countries);
         setList(
           countries.filter((listCountry) =>
-            listCountry.name.toLowerCase().includes(lowCaseString)
+            listCountry.name.official.toLowerCase().includes(lowCaseString)
           )
         );
         return;
@@ -57,7 +57,7 @@ const CountriesList = () => {
         setRegion(list);
         setList(
           list.filter((listCountry) =>
-            listCountry.name.toLowerCase().includes(lowCaseString)
+            listCountry.name.official.toLowerCase().includes(lowCaseString)
           )
         );
         return;

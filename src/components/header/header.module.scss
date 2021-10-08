@@ -1,4 +1,4 @@
-@import "../colors/colors.modules.scss";
+@import '../colors/colors.modules.scss';
 
 .header {
   // width: 100%;
@@ -10,6 +10,15 @@
   padding: 1rem 8rem;
   margin: 0 0rem;
 
+  .pageName {
+    text-decoration: none;
+    color: $DarkModeElements;
+
+    &.darkTheme {
+      color: $LightModeElements;
+    }
+  }
+
   &.darkTheme {
     background-color: $DarkModeElements;
     color: $LightModeElements;
@@ -20,8 +29,7 @@
   .header {
     padding: 1rem calc(5vw);
     .pageName {
-      font-size: 1.4rem;
-      background-color: green;
+      font-size: 0.6rem;
     }
   }
 }

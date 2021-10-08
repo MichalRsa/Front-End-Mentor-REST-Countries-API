@@ -8,7 +8,7 @@ const List = ({ list }) => {
   return (
     <ul className={styles.countryList}>
       {list.map((country) => (
-        <li key={country.name}>
+        <li key={country.name.common}>
           <ListItem {...country} />
         </li>
       ))}
