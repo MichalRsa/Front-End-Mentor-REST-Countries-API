@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch, HashRouter } from 'react-router-dom';
 
 import Header from './header/Header';
 import CountiresList from './CountriesList/CountriesList';
@@ -7,7 +7,7 @@ import NotFound from './notFound/NotFound';
 
 const Main = () => {
   return (
-    <BrowserRouter basename='/Front-End-Mentor-REST-Countries-API'>
+    <HashRouter basename='/'>
       <Header />
       <Switch>
         <Route path='/:id' exact render={() => <CountiresList />} />
@@ -15,7 +15,7 @@ const Main = () => {
 
         <Redirect from='/' exact to='/all' />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
