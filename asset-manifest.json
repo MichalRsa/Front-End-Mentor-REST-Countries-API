@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Front-End-Mentor-REST-Countries-API/static/css/main.b8a63532.chunk.css",
-    "main.js": "/Front-End-Mentor-REST-Countries-API/static/js/main.1bb2094b.chunk.js",
-    "main.js.map": "/Front-End-Mentor-REST-Countries-API/static/js/main.1bb2094b.chunk.js.map",
+    "main.js": "/Front-End-Mentor-REST-Countries-API/static/js/main.48583189.chunk.js",
+    "main.js.map": "/Front-End-Mentor-REST-Countries-API/static/js/main.48583189.chunk.js.map",
     "runtime-main.js": "/Front-End-Mentor-REST-Countries-API/static/js/runtime-main.441747b6.js",
     "runtime-main.js.map": "/Front-End-Mentor-REST-Countries-API/static/js/runtime-main.441747b6.js.map",
-    "static/js/2.dc84f9ba.chunk.js": "/Front-End-Mentor-REST-Countries-API/static/js/2.dc84f9ba.chunk.js",
-    "static/js/2.dc84f9ba.chunk.js.map": "/Front-End-Mentor-REST-Countries-API/static/js/2.dc84f9ba.chunk.js.map",
+    "static/js/2.d5d641b4.chunk.js": "/Front-End-Mentor-REST-Countries-API/static/js/2.d5d641b4.chunk.js",
+    "static/js/2.d5d641b4.chunk.js.map": "/Front-End-Mentor-REST-Countries-API/static/js/2.d5d641b4.chunk.js.map",
     "index.html": "/Front-End-Mentor-REST-Countries-API/index.html",
     "static/css/main.b8a63532.chunk.css.map": "/Front-End-Mentor-REST-Countries-API/static/css/main.b8a63532.chunk.css.map",
-    "static/js/2.dc84f9ba.chunk.js.LICENSE.txt": "/Front-End-Mentor-REST-Countries-API/static/js/2.dc84f9ba.chunk.js.LICENSE.txt"
+    "static/js/2.d5d641b4.chunk.js.LICENSE.txt": "/Front-End-Mentor-REST-Countries-API/static/js/2.d5d641b4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.441747b6.js",
-    "static/js/2.dc84f9ba.chunk.js",
+    "static/js/2.d5d641b4.chunk.js",
     "static/css/main.b8a63532.chunk.css",
-    "static/js/main.1bb2094b.chunk.js"
+    "static/js/main.48583189.chunk.js"
   ]
 }
