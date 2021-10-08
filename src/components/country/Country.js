@@ -18,7 +18,6 @@ const Country = () => {
   const [country, setCountry] = useState();
   const [borders, setBorders] = useState();
   const [loading, setLoading] = useState(true);
-  const [prevLocation, setLocation] = useState(null);
 
   useEffect(() => {
     let country;
@@ -41,23 +40,7 @@ const Country = () => {
       }
     });
     setLoading(false);
-    setLocation(history.location.state);
-    // });
-  }, [type, id]);
-
-  const renderButton = () => {
-    const smth = () =>
-      prevLocation === undefined
-        ? {
-            action: () => history.goBack(),
-            name: 'Home',
-          }
-        : { action: () => history.goBack(), name: 'Back' };
-
-    return <Button action={smth().action} text={smth().name} />;
-  };
-  console.log(prevLocation);
-  console.log(history.location);
+  }, [type, id, countries]);
 
   if (loading) return <Loading />;
 
@@ -67,7 +50,7 @@ const Country = () => {
     <div
       className={`${styles.countryPage} ${darkTheme ? styles.darkTheme : null}`}
     >
-      {renderButton()}
+      <Button action={() => history.goBack()} text='Back' />
       <div className={styles.flagContainer}>
         <img className={styles.flagImg} src={country.flags.svg} alt='' />
       </div>
