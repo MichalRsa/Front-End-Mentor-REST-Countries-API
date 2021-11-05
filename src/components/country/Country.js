@@ -76,10 +76,12 @@ const Country = () => {
         <p>
           <span className={styles.span}>Capital:</span> {country.capital}
         </p>
-        <p>
-          <span className={styles.span}>Top Level Domain:</span>{' '}
-          {country.tld[0]}
-        </p>
+        {Array.isArray(country.tld) && (
+          <p>
+            <span className={styles.span}>Top Level Domain:</span>{' '}
+            {country.tld[0]}
+          </p>
+        )}
         {arrayToJsxEl(country.currencies, 'Currencies', 'Currency')}
         {arrayToJsxEl(country.languages, 'Languages', 'Language')}
       </div>
